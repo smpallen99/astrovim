@@ -1,7 +1,7 @@
 -- Mapping data with "desc" stored directly by vim.keymap.set().
 --
 
-local utils = require("astronvim.utils")
+local utils = require "astronvim.utils"
 
 local sections = {
   F = { name = "󰍉 Find" },
@@ -27,10 +27,9 @@ return {
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr)
-          require("astronvim.utils.buffer").close(
-            bufnr)
-        end)
+        require("astronvim.utils.status").heirline.buffer_picker(
+          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+        )
       end,
       desc = "Pick to close",
     },
@@ -64,11 +63,11 @@ return {
       function()
         local cwd = vim.fn.stdpath "config" .. "/.."
         local search_dirs = {}
-        for _, dir in ipairs(astronvim.supported_configs) do                      -- search all supported config locations
-          if dir == astronvim.install.home then dir = dir .. "/lua/user" end      -- don't search the astronvim core files
+        for _, dir in ipairs(astronvim.supported_configs) do -- search all supported config locations
+          if dir == astronvim.install.home then dir = dir .. "/lua/user" end -- don't search the astronvim core files
           if vim.fn.isdirectory(dir) == 1 then table.insert(search_dirs, dir) end -- add directory to search if exists
         end
-        if vim.tbl_isempty(search_dirs) then                                      -- if no config folders found, show warning
+        if vim.tbl_isempty(search_dirs) then -- if no config folders found, show warning
           utils.notify("No user configuration files found", "warn")
         else
           if #search_dirs == 1 then cwd = search_dirs[1] end -- if only one directory, focus cwd
@@ -82,8 +81,7 @@ return {
       desc = "Find AstroNvim config files",
     },
     ["<leader>Fb"] = { function() require("telescope.builtin").buffers() end, desc = "Find buffers" },
-    ["<leader>Fc"] =
-    { function() require("telescope.builtin").grep_string() end, desc = "Find for word under cursor" },
+    ["<leader>Fc"] = { function() require("telescope.builtin").grep_string() end, desc = "Find for word under cursor" },
     ["<leader>FC"] = { function() require("telescope.builtin").commands() end, desc = "Find commands" },
     ["<leader>Ff"] = { function() require("telescope.builtin").find_files() end, desc = "Find files" },
     ["<leader>FF"] = {
@@ -94,13 +92,14 @@ return {
     ["<leader>Fk"] = { function() require("telescope.builtin").keymaps() end, desc = "Find keymaps" },
     ["<leader>Fm"] = { function() require("telescope.builtin").man_pages() end, desc = "Find man" },
     -- if is_available "nvim-notify" then
-    ["<leader>Fn"] =
-    { function() require("telescope").extensions.notify.notify() end, desc = "Find notifications" },
+    ["<leader>Fn"] = { function() require("telescope").extensions.notify.notify() end, desc = "Find notifications" },
     -- end,
     ["<leader>Fo"] = { function() require("telescope.builtin").oldfiles() end, desc = "Find history" },
     ["<leader>Fr"] = { function() require("telescope.builtin").registers() end, desc = "Find registers" },
-    ["<leader>Ft"] =
-    { function() require("telescope.builtin").colorscheme { enable_preview = true } end, desc = "Find the,mes" },
+    ["<leader>Ft"] = {
+      function() require("telescope.builtin").colorscheme { enable_preview = true } end,
+      desc = "Find the,mes",
+    },
     ["<leader>Fw"] = { function() require("telescope.builtin").live_grep() end, desc = "Find words" },
     ["<leader>FW"] = {
       function()
@@ -111,6 +110,7 @@ return {
       end,
       desc = "Find words in all files",
     },
+    ["<leader>gS"] = { "<cmd>Git<cr>", desc = "fugitive" },
   },
   t = {
     -- setting a mapping to false will disable it

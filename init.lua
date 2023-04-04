@@ -26,11 +26,11 @@ return {
   lsp = {
     -- customize lsp formatting options
     formatting = {
-      filter = function(client)
-        -- if vim.bo.filetype == "vue" then return client.name == "changelog" end
-        if vim.bo.filetype == "vue" then return client.name == "prettier" end
-        -- if vim.bo.filetype == "vue" then return true end
-      end,
+      -- filter = function(client)
+      --   -- if vim.bo.filetype == "vue" then return client.name == "changelog" end
+      --   if vim.bo.filetype == "vue" then return client.name == "prettier" end
+      --   -- if vim.bo.filetype == "vue" then return true end
+      -- end,
       -- control auto formatting on save
       format_on_save = {
         enabled = true,     -- enable or disable format on save globally

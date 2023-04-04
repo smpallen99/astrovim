@@ -5,7 +5,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     -- overrides `require("mason-lspconfig").setup(...)`
     opts = {
-      ensure_installed = { "lua_ls" },
+      ensure_installed = { "lua_ls", "tsserver", "elixirls" },
     },
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
@@ -14,6 +14,7 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
       -- ensure_installed = { "prettier", "stylua" },
+      ensure_installed = { "stylua" },
     },
   },
   {
@@ -21,6 +22,17 @@ return {
     -- overrides `require("mason-nvim-dap").setup(...)`
     opts = {
       -- ensure_installed = { "python" },
+    },
+  },
+
+  {
+    "mantoni/eslint_d.js",
+    {
+      "williamboman/mason-lspconfig.nvim",
+      on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentFormattingRangeProvider = false
+      end,
     },
   },
 }

@@ -1,7 +1,9 @@
 return {
   settings = {
-    elixirLS = {
-      enableTestLenses = false,
-    }
-  }
+    elixirls = {
+      elixirLS = {
+        enableTestLenses = false,
+      },
+    },
+  },
 }
