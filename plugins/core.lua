@@ -21,7 +21,18 @@ return {
     end,
   },
   -- You can disable default plugins as follows:
-  -- { "max397574/better-escape.nvim", enabled = false },
+  { "max397574/better-escape.nvim", enabled = false },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
   --
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   -- {
@@ -70,7 +81,7 @@ return {
   --     -- Add bindings which show up as group name
   --     local wk = require "which-key"
   --     wk.register({
-  --       b = { name = "Buffer" },
+  --       f = { name = "Find files" },
   --     }, { mode = "n", prefix = "<leader>" })
   --   end,
   -- },
