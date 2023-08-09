@@ -24,6 +24,7 @@ return {
     -- mappings seen under group name "Buffer"
     ["<leader>r"] = { "<cmd>b#<cr>", desc = "Last buffer" },
     ["<leader>f"] = { function() require("telescope.builtin").find_files() end, desc = "Find files" },
+    ["<leader>a"] = { "<cmd>A<cr>", desc = "Alternate File" },
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
@@ -34,6 +35,24 @@ return {
       desc = "Pick to close",
     },
 
+    -- quit
+
+    ["<leader>Q"] = { "<cmd>qa<cr>", desc = "Quit all" },
+
+    -- buffer
+    --
+    ["<TAB>"] = { "<cmd>bnext<cr>", desc = "Next buffer" },
+    ["<S-TAB>"] = { "<cmd>bprevious<cr>", desc = "Prev buffer" },
+
+    -- tabs
+    ["<leader><tab>"] = { desc = "Tabs" },
+
+    ["<leader><tab>l"] = { "<cmd>tablast<cr>", desc = "Last Tab" },
+    ["<leader><tab>f"] = { "<cmd>tabfirst<cr>", desc = "First Tab" },
+    ["<leader><tab><tab>"] = { "<cmd>tabnew<cr>", desc = "New Tab" },
+    ["<leader><tab>]"] = { "<cmd>tabnext<cr>", desc = "Next Tab" },
+    ["<leader><tab>d"] = { "<cmd>tabclose<cr>", desc = "Close Tab" },
+    ["<leader><tab>["] = { "<cmd>tabprevious<cr>", desc = "Previous Tab" },
     -- ["<leader>c"] = { name = "Code" },
     -- ["<leader>cc"] = { function() require("astronvim.utils.buffer").close() end, desc = "Close buffer" },
     -- ["<leader>cC"] = { name = "Coverage" },
