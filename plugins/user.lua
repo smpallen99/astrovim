@@ -18,6 +18,7 @@ return {
       elixir.setup {
         settings = elixir.settings {
           enableTestLenses = true,
+
           suggestSpecs = true,
         },
         log_level = vim.lsp.protocol.MessageType.Log,
@@ -29,6 +30,14 @@ return {
           vim.keymap.set("n", "<space>Fep", ":ElixirFromPipe<cr>", { buffer = true, noremap = true })
           vim.keymap.set("n", "<space>Fet", ":ElixirToPipe<cr>", { buffer = true, noremap = true })
           vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true })
+
+          -- bindings for standard LSP functions.
+          vim.keymap.set("n", "<space>lf", "<cmd>lua vim.lsp.buf.format()<cr>", map_opts)
+          vim.keymap.set("n", "<space>ld", "<cmd>lua vim.diagnostic.open_float()<cr>", map_opts)
+          vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", map_opts)
+          vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", map_opts)
+          vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.implementation()<cr>", map_opts)
+          vim.keymap.set("n", "<space>1gD", "<cmd>lua vim.lsp.buf.type_definition()<cr>", map_opts)
         end,
       }
     end,
