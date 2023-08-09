@@ -5,6 +5,10 @@ return {
     local null_ls = require "null-ls"
 
     local lsp_formatting = function(bufnr)
+      vim.lsp.format {
+        timeout = 5000,
+      }
+
       vim.lsp.buf.format {
         bufnr = bufnr,
       }
